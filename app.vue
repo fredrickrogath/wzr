@@ -1,4 +1,7 @@
 <template>
+  <NuxtLayout>
+      <NuxtPage/>
+    </NuxtLayout>
   <!-- <div>
   <el-button @click="ElMessage('hello')">button</el-button>
   <ElButton :icon="ElIconEditPen" type="success">button</ElButton>

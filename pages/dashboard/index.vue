@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <aside class="">
     <div class="flex h-[30vh] py-1">
       <div class="bg-green-300 w-1/2 mx-1">hello 1</div>
 
@@ -27,5 +27,13 @@
 
       <div class="bg-green-700 w-1/3 mx-1">hello 8</div>
     </div>
-  </div>
+  </aside>
 </template>
+
+<script setup>
+import { useCounterStore } from '@/stores/myStore'
+const { sayHello } = useUtils()
+const store = useCounterStore()
+// console.log(store.name)
+sayHello('RickGath fredro')
+</script>

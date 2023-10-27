@@ -18,10 +18,13 @@
     "nuxt-icon": "^0.6.0",
     "sass": "^1.69.4",
     "sass-loader": "^10.4.1",
+    "vite-svg-loader": "^4.0.0",
     "vue": "^3.3.6",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@vueuse/nuxt": "^10.5.0"
+    "@pinia/nuxt": "^0.5.1",
+    "@vueuse/nuxt": "^10.5.0",
+    "pinia": "^2.1.7"
   }
 }

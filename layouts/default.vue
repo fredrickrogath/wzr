@@ -53,9 +53,9 @@
   <div class="flex w-full bg-yellow-400">
     <div class="mt-[2px]" :class="sidebarWidth">
       <ClientOnly fallback-tag="span">
-        <SideBarUnCollapsed/>
+        <SideBarUnCollapsed v-show="isCollapse"/>
+        <SideBarCollapsed v-show="!isCollapse"/>
         <template #fallback>
-          <!-- this will be rendered on server side -->
           <div class="h-[70vh] flex items-center justify-center">
             <el-button loading></el-button>
           </div>
@@ -107,6 +107,7 @@ const toggleCollapse = () => {
   layoutStore.toggleCollapse()
   sidebarWidth.value = layoutStore.getSidebarWidth
   bodyWidth.value = layoutStore.getBodyWidth
+  isCollapse.value = layoutStore.getIsCollapse;
 };
 </script>
 

@@ -1,7 +1,7 @@
 export const useLayoutStore = defineStore("counter", () => {
   const isCollapse = ref(false);
-  const sidebarWidth = ref("w-[5%]");
-  const bodyWidth = ref("w-[95%]");
+  const sidebarWidth = ref("5%");
+  const bodyWidth = ref("95%");
 
   const getIsCollapse = computed(() => isCollapse.value);
   const getSidebarWidth = computed(() => sidebarWidth.value);
@@ -17,11 +17,11 @@ export const useLayoutStore = defineStore("counter", () => {
 
   function toggleCollapse() {
     if (getIsCollapse.value) {
-      bodyWidth.value = "w-[95%]";
-      sidebarWidth.value = "w-[5%]";
+      bodyWidth.value = "95%";
+      sidebarWidth.value = "5%";
     } else {
-      bodyWidth.value = "w-[90%]";
-      sidebarWidth.value = "w-[10%]";
+      bodyWidth.value = "85%";
+      sidebarWidth.value = "15%";
     }
     isCollapse.value = !isCollapse.value;
   }

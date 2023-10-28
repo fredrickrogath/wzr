@@ -31,9 +31,6 @@
 </template>
 
 <script setup>
-import { useCounterStore } from '@/stores/myStore'
 const { sayHello } = useUtils()
-const store = useCounterStore()
-// console.log(store.name)
 sayHello('RickGath fredro')
 </script>

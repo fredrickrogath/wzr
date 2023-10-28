@@ -1,7 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // devtools: { enabled: true },
+  pages: true,
+  devtools: { enabled: true },
   modules: [ '@element-plus/nuxt', '@vueuse/nuxt', '@nuxtjs/tailwindcss', 'nuxt-icon', '@pinia/nuxt'],  elementPlus: { /** Options */ },
+  plugins: ['~/plugins/gsap'],
   // app: {
   //   head: {
   //     link: [

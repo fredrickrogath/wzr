@@ -6,7 +6,7 @@
 
 <style>
 html.dark {
-  background: #121212;
-  color: #626aef;
+  background: #111827;
+  color: #d1d5db;
 }
 </style>

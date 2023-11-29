@@ -1,7 +1,8 @@
 <template>
   <!-- component -->
   <aside
-    class="flex flex-col h-full px-4 overflow-hidden border-r rtl:border-r-0 rtl:border-l"
+
+id="sidebar"  class="flex flex-col h-full px-4 overflow-hidden"
   >
     <div class="flex flex-col justify-between flex-1">
       <nav class="-mx-3">
@@ -10,9 +11,9 @@
             >home</label
           >
 
-          <a
+          <NuxtLink
             class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg"
-            href="#"
+            to="/"
             ><el-tooltip content="Home" placement="right" effect="dark">
               <IconsHome />
             </el-tooltip>
@@ -20,7 +21,7 @@
             <span class="mx-2 text-sm font-medium absolute -left-36" id="word"
               >Home</span
             >
-          </a>
+          </NuxtLink>
         </div>
 
         <div class="">
@@ -28,22 +29,22 @@
             >content</label
           >
 
-          <a
-            class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg"
-            href="#"
+          <NuxtLink
+            class="hover:bg-gray-200 flex items-center px-3 py-2 my-1 transition-colors duration-300 transform rounded-lg"
+            to="/sales"
           >
             <el-tooltip content="Sales" placement="right" effect="dark">
               <IconsAnalytic />
             </el-tooltip>
 
-            <span class="mx-2 text-sm font-medium absolute -left-36" id="word"
+            <span class="mx-2 text-sm fo  nt-medium absolute -left-36" id="word"
               >Sales</span
             >
-          </a>
+          </NuxtLink>
 
-          <a
-            class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg"
-            href="#"
+          <NuxtLink
+            class="hover:bg-gray-200 flex items-center px-3 py-2 my-1 transition-colors duration-300 transform rounded-lg"
+            to="expenses"
           >
             <el-tooltip content="Expenses" placement="right" effect="dark">
               <IconsExpense />
@@ -52,11 +53,11 @@
             <span class="mx-2 text-sm font-medium absolute -left-36" id="word"
               >Expenses</span
             >
-          </a>
+          </NuxtLink>
 
-          <a
-            class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg"
-            href="#"
+          <NuxtLink
+            class="hover:bg-gray-200 flex items-center px-3 py-2 my-1 transition-colors duration-300 transform rounded-lg"
+            to="/purchases"
           >
             <el-tooltip content="Purchases" placement="right" effect="dark">
               <IconsPurchase />
@@ -65,7 +66,7 @@
             <span class="mx-2 text-sm font-medium absolute -left-36" id="word"
               >Purchases</span
             >
-          </a>
+          </NuxtLink>
         </div>
 
         <div class="">
@@ -73,9 +74,9 @@
             >manage</label
           >
 
-          <a
-            class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg"
-            href="#"
+          <NuxtLink
+            class="hover:bg-gray-200 flex items-center px-3 py-2 my-1 transition-colors duration-300 transform rounded-lg"
+            to="/users"
           >
             <el-tooltip content="Users" placement="right" effect="dark">
               <IconsUser />
@@ -84,11 +85,11 @@
             <span class="mx-2 text-sm font-medium absolute -left-36" id="word"
               >Users</span
             >
-          </a>
+          </NuxtLink>
 
-          <a
-            class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg"
-            href="#"
+          <NuxtLink
+            class="hover:bg-gray-200 flex items-center px-3 py-2 my-1 transition-colors duration-300 transform rounded-lg"
+            to="/documents"
           >
             <el-tooltip content="Documents" placement="right" effect="dark">
               <IconsDocument />
@@ -97,11 +98,11 @@
             <span class="mx-2 text-sm font-medium absolute -left-36" id="word"
               >Co documents</span
             >
-          </a>
+          </NuxtLink>
 
-          <a
-            class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg"
-            href="#"
+          <NuxtLink
+            class="hover:bg-gray-200 flex items-center px-3 py-2 my-1 transition-colors duration-300 transform rounded-lg"
+            to="/reports"
           >
             <el-tooltip content="Reports" placement="right" effect="dark">
               <IconsReport />
@@ -110,16 +111,16 @@
             <span class="mx-2 text-sm font-medium absolute -left-36" id="word"
               >Financial Reports</span
             >
-          </a>
+          </NuxtLink>
         </div>
 
-        <div class="absolute bottom-0">
-          <label class="text-xs text-gray-500 uppercase dark:text-gray-400"
+        <!-- <div class="absolute bottom-0">
+          <label class="text-xs uppercase"
             >Log out</label
           >
 
           <a
-            class="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+            class="hover:bg-gray-200 flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg"
             href="#"
           >
             <el-tooltip content="Logout" placement="right" effect="dark">
@@ -130,17 +131,19 @@
               >Logout</span
             >
           </a>
-        </div>
+        </div> -->
       </nav>
     </div>
   </aside>
 </template>
 
 <script lang="ts" setup>
+const isCollapse = ref(false);
 import { ref, watch } from "vue";
+const layoutStore = useLayoutStore();
+isCollapse.value = layoutStore.getIsCollapse;
 import { useLayoutStore } from "@/stores/layout";
 const { $gsap: gsap, $Draggable: Draggable } = useNuxtApp();
-
 const props = defineProps({
   isCollapse: { type: Boolean, required: true },
 });
@@ -153,7 +156,7 @@ watch(
       t1.fromTo(
         "#word",
         {
-          left: "-144px ",
+          left: "-144px",
         },
         {
           duration: 0.5,
@@ -169,11 +172,31 @@ watch(
         },
         {
           duration: 0.5,
-          left: "-144px ",
+          left: "-144px",
           ease: "power2.inOut",
         }
       );
     }
   }
 );
+
+onMounted(() => {
+  // const sidebarWidth = ref(layoutStore.getSidebarWidth);
+  // sidebarWidth.value = isCollapse.value ? "17%" : "5%";
+
+  if (isCollapse.value) {
+    const initialAnimation = gsap.timeline();
+    initialAnimation.fromTo(
+        "#word",
+        {
+          left: "-144px",
+        },
+        {
+          duration: 0.5,
+          left: "35px",
+          ease: "power2.inOut",
+        }
+      );
+  }
+});
 </script>

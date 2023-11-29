@@ -89,4 +89,12 @@ const gridData = [
     address: "New York City",
   },
 ];
+// const isDark = useDark();
+
+// const themeClass = computed(() => {
+//   return {
+//     'bg-[#6b7280]': isDark.value,
+//     // 'bg-black': !isDark.value,
+//   };
+// });
 </script>

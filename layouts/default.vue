@@ -1,10 +1,11 @@
 <template>
-  <div class="my-1 mx-1 flex justify-between">
+  <div class="my-0 mx-1 flex justify-between">
     <div class="flex row gap-3 w-[33%]">
-      <div class="flex flex-col">
+      <div class="flex flex-col pt-1">
         <ClientOnly>
           <div>
             <HeaderMenuLeft />
+            <!-- <RotatingText/> -->
           </div>
           <div class="mx-auto">
             <el-switch
@@ -16,7 +17,7 @@
           </div>
           <template #fallback>
             <div
-              class="h-[10vh] flex items-center justify-center ml-2 my-1 mr-1"
+              class="h-[9vh] flex items-center justify-center ml-2 mr-1"
             >
               <el-button loading></el-button>
             </div>
@@ -27,11 +28,11 @@
       <div class="w-full">
         <ClientOnly>
           <HeaderBreadCrumb />
-          <div class="text-gray-100">hello world</div>
+          <div class="">hello world</div>
           <div>hello world</div>
           <template #fallback>
             <div
-              class="h-[10vh] flex items-center justify-center text-center my-1 mr-1"
+              class="h-[9vh] flex items-center justify-center text-center my-1 mr-1"
             >
               <el-button loading></el-button>
             </div>
@@ -40,28 +41,27 @@
       </div>
     </div>
 
-    <DividerVertical />
+    <!-- <DividerVertical class="w-[1px]"/> -->
 
     <div class="w-[33%]">
       <ClientOnly fallback-tag="span">
         <ClockDigital />
         <template #fallback>
-          <!-- this will be rendered on server side -->
-          <div class="h-[10vh] flex items-center justify-center">
+          <div class="h-[9vh] flex items-center justify-center">
             <el-button loading></el-button>
           </div>
         </template>
       </ClientOnly>
     </div>
 
-    <DividerVertical />
+    <!-- <DividerVertical class="w-[1px]"/> -->
 
     <div class="w-[33.3%]">
       <ClientOnly fallback-tag="span">
         <HeaderMenuRight />
 
         <template #fallback>
-          <div class="h-[10vh] mt-1 flex items-center justify-center">
+          <div class="h-[9vh] mt-1 flex items-center justify-center">
             <el-button loading></el-button>
           </div>
         </template>
@@ -71,12 +71,12 @@
 
   <DividerHorizontal />
 
-  <div class="flex w-full">
+  <div class="flex w-full overflow-hidden">
     <div class="sidebarWidth" :style="{ width: sidebarWidth }">
       <ClientOnly fallback-tag="span">
         <SideBar :isCollapse="isCollapse" />
         <template #fallback>
-          <div class="h-[70vh] flex items-center justify-center">
+          <div class="h-[70vh] mx-2 flex items-center justify-center">
             <el-button loading></el-button>
           </div>
         </template>
@@ -85,13 +85,13 @@
 
     <DividerVertical />
 
-    <div class="mt-[0px] ml-[2px] w-full background-image">
+    <div class="mt-[0px] ml-[0px] w-full h-[100vh] background-image">
       <!-- <div style="height: 100%"> -->
-      <!-- <el-scrollbar height="100%" class=""> -->
+      <el-scrollbar height="" class="">
       <slot />
-      <!-- </el-scrollbar> -->
+      <el-backtop :right="20" :bottom="20" />
+      </el-scrollbar>
       <!-- </div> -->
-      <!-- <el-backtop :right="20" :bottom="20" /> -->
     </div>
   </div>
 </template>
@@ -110,8 +110,8 @@ import {
 
 const isDark = useDark();
 const isCollapse = ref(false);
-const sidebarWidth = ref("5%");
 const layoutStore = useLayoutStore();
+const sidebarWidth = ref(layoutStore.getSidebarWidth);
 isCollapse.value = layoutStore.getIsCollapse;
 import { useDark, useToggle } from "@vueuse/core";
 
@@ -122,10 +122,6 @@ const handleClose = (key: string, keyPath: string[]) => {};
 const toggleCollapse = () => {
   layoutStore.toggleCollapse();
 };
-
-onMounted(() => {
-  isDark.value = !isDark.value;
-});
 
 watch(isCollapse, (newValue) => {
   const t1 = gsap.timeline({ paused: false, reversed: false });
@@ -154,6 +150,27 @@ watch(isCollapse, (newValue) => {
       }
     );
   }
+});
+
+onMounted(() => {
+  if (isCollapse.value) {
+    const initialAnimation = gsap.timeline();
+    initialAnimation.fromTo(
+      ".sidebarWidth",
+      {
+        width: "5%",
+      },
+      {
+        duration: 0.5,
+        width: "17%",
+        ease: "power2.inOut",
+      }
+    );
+  }
+
+  const initialClassName = isDark.value ? "dark-background" : "light-background";
+  const element = document.querySelector(".background-image");
+  element.classList.add(initialClassName);
 });
 
 watch(isDark, (newValue) => {

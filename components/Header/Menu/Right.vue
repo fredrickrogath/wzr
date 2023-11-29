@@ -1,25 +1,34 @@
 <template>
-  <div class="">
-    <div class="flex justify-end mx-1">
-      Login as <span class="mx-1">Manager</span>,
-      <span class="ml-1">Last Login was </span>
-      <span class="mx-1 tracking-wide">02:03:14 ,12 May 2023</span>
+  <div class="mx-1 pt-1">
+    <div class="flex justify-end">
+      <span class="mx-1 italic">Manager</span>
+      <div class="text-center">
+        <div style="display: flex; align-items: center" class="mx-2">
+          <el-avatar src="ozula.jpg" style="height: 30px; width: 30px" />
+        </div>
+        <el-switch
+          v-model="isDark"
+          class="pt-5"
+          :active-action-icon="Moon"
+          :inactive-action-icon="Sunny"
+        />
+      </div>
     </div>
 
-    <div class="flex py-2">
-      <div class="grow">hello 1</div>
+    <div class="flex pt-0">
+      <!-- <div class="grow">hello 1</div>
 
       <div class="grow">hello 2</div>
 
-      <div class="grow">hello 2</div>
+      <div class="grow">hello 2</div> -->
 
-      <div class="mx-auto">
+      <!-- <div class="mx-auto">
         <el-switch
           v-model="isDark"
           :active-action-icon="Moon"
           :inactive-action-icon="Sunny"
         />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

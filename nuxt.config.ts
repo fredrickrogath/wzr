@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   pages: true,
   devtools: { enabled: true },
   modules: [ '@element-plus/nuxt', '@vueuse/nuxt', '@nuxtjs/tailwindcss', 'nuxt-icon', '@pinia/nuxt'],  elementPlus: { /** Options */ },
-  plugins: ['~/plugins/gsap', { src : '~/plugins/vue-apexchart.client.js', ssr : false },],
+  plugins: ['~/plugins/gsap', { src : '~/plugins/vue-apexchart.client.js', ssr : false }],
   build: {
     vendor : [
        'vue-apexchart'

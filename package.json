@@ -29,6 +29,7 @@
     "gsap": "^3.12.2",
     "pinia": "^2.1.7",
     "vue-google-charts": "^1.1.0",
-    "vue3-apexcharts": "^1.4.4"
+    "vue3-apexcharts": "^1.4.4",
+    "vuedraggable": "^4.1.0"
   }
 }

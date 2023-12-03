@@ -12,7 +12,7 @@ id="sidebar"  class="flex flex-col h-full px-4 overflow-hidden"
           >
 
           <NuxtLink
-            class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg"
+            class="hover:bg-gray-200 flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg"
             to="/"
             ><el-tooltip content="Home" placement="right" effect="dark">
               <IconsHome />

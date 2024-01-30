@@ -1,12 +1,12 @@
 <template>
     <div
-    class="mini border border-gray-200 rounded-xl mx-1 relative w-full bg-center group rounded-lg overflow-hidden my-1 py-1 transition duration-300 ease-in-out"
+    class=""
     >
     <ClientOnly>
     <div
-      class="absolute inset-0 bg-opacity-50 transition duration-300 ease-in-out"
+      class="absolute shadow-lg inset-0 bg-opacity-50 transition duration-300 ease-in-out"
     ></div>
-    <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex items-center">
+    <div class="relative w-full h-full px-2 sm:px-2 lg:px-2 flex items-center">
       <div>
         <div class="flex space-x-2 items-center">
           <div class="rounded-md flex items-center">

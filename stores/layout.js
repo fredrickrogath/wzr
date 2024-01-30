@@ -3,7 +3,7 @@ export const useLayoutStore = defineStore("counter", () => {
   const localStorageKey = 'sidebarState';
   const isLocalStorageAvailable = isClient && typeof localStorage !== 'undefined';
 
-  const isCollapse = ref(isLocalStorageAvailable ? localStorage.getItem(localStorageKey) === 'true' : false);
+  const isCollapse = ref(isLocalStorageAvailable ? localStorage.getItem(localStorageKey) === 'true' : 'false');
   const getIsCollapse = computed(() => isCollapse.value);
   const getSidebarWidth = computed(() => {
     if (isLocalStorageAvailable) {
@@ -18,7 +18,7 @@ export const useLayoutStore = defineStore("counter", () => {
     isCollapse.value = !isCollapse.value;
     if (isLocalStorageAvailable) {
       localStorage.setItem(localStorageKey, isCollapse.value.toString());
-      console.log(localStorage.getItem(localStorageKey));
+      // console.log(localStorage.getItem(localStorageKey));
     }
   };
 

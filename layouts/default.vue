@@ -8,9 +8,11 @@
             <!-- <RotatingText/> -->
           </div>
           <div class="mx-auto">
+            <!-- @click="toggleCollapse" -->
+            <!-- v-model="isCollapse" -->
             <el-switch
-              @click="toggleCollapse"
-              v-model="isCollapse"
+              
+              
               :active-action-icon="ArrowRight"
               :inactive-action-icon="ArrowLeft"
             />
@@ -84,7 +86,7 @@
     </div>
 
     <DividerVertical />
-
+    
     <div class="mt-[0px] ml-[0px] w-full h-[100vh] background-image">
       <!-- <div style="height: 100%"> -->
       <el-scrollbar height="" class="">
@@ -111,8 +113,9 @@ import {
 const isDark = useDark();
 const isCollapse = ref(false);
 const layoutStore = useLayoutStore();
-const sidebarWidth = ref(layoutStore.getSidebarWidth);
 isCollapse.value = layoutStore.getIsCollapse;
+const sidebarWidth = ref(layoutStore.getSidebarWidth);
+// const sidebarWidth = ref(isCollapse.value ? '17%' : '5%');
 import { useDark, useToggle } from "@vueuse/core";
 
 const errorHandler = () => true;

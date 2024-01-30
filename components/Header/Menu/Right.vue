@@ -5,13 +5,13 @@
       <div class="text-center">
         <div style="display: flex; align-items: center" class="mx-2">
           <el-dropdown>
-          <el-avatar src="ozula.jpg" style="height: 30px; width: 30px" />
-          <template #dropdown>
-        <el-dropdown-menu>
-          <a href="#">Log out</a>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
+            <el-avatar src="ozula.jpg" style="height: 30px; width: 30px" />
+            <template #dropdown>
+              <el-dropdown-menu>
+                <a href="#">Log out</a>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
         </div>
         <el-switch
           v-model="isDark"

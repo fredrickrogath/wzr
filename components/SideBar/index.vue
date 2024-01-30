@@ -148,6 +148,15 @@ const props = defineProps({
   isCollapse: { type: Boolean, required: true },
 });
 
+// const closeSideBar = closeSideBar( () => {
+//   console.log("hello")
+// });
+
+// const closeSideBar = () => {
+//   isCollapse.value = false;
+// };
+
+
 watch(
   () => props.isCollapse,
   (newValue, oldValue) => {

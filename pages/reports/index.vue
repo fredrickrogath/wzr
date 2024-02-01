@@ -361,7 +361,7 @@
 
     <div>
       <div
-        class="w-screen text-sm max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 shadow-xl rounded-lg"
+        class="w-screen text-sm max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 shadow-xl"
       >
         <!-- <div class="flex justify-between mx-2 absolute mt-1 bg-red-200">
         <svg
@@ -434,7 +434,7 @@
           </div>
           <div class="flex flex-col justify-center">
             <div
-              class="mx-auto w-16 h-16 relative border-4 border-white rounded-full overflow-hidden"
+              class="mx-auto w-16 h-16 relative rounded-full overflow-hidden"
             >
               <img
                 class="object-cover object-center h-20"
@@ -515,12 +515,12 @@
                   </div>
                 </div> -->
 
-                <div class="relative overflow-hidden">
+                <div class="relative overflow-hidden glow-on-hover hover:p-1">
                   <!-- Profile info -->
                   <div class="absolute bottom-0 left-0 z-10 p-2 text-white">
                     <div class="flex items-center">
                       <div
-                        class="w-12 h-12 relative border-4 border-white rounded-full overflow-hidden"
+                        class="w-12 h-12 relative rounded-full overflow-hidden"
                       >
                         <img
                           class="object-cover object-center h-12"
@@ -656,13 +656,13 @@
                       </svg> -->
                     </div>
 
-                    <div class="flex mx-1">
+                    <div class="flex mx-1 border-t" :class="isDark ? 'border-gray-700' : 'border-gray-200'">
                       <div class="font-semibold mr-1">Post Details</div>
                       <div>$12 per day only !</div>
                     </div>
 
-                    <div class="shadow-xl rounded-lg py-1 mb-1">
-                      <div class="flex items-center">
+                    <div class="shadow rounded-lg py-1 mb-1 border-b" :class="isDark ? 'border-gray-700' : 'border-gray-200'">
+                      <div class="flex items-center border-b pb-1" :class="isDark ? 'border-gray-700' : 'border-gray-200'">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -680,7 +680,7 @@
                       </div>
 
                       <div class="flex justify-between mt-1">
-                        <div class="text-gray-500 flex">
+                        <div class="flex">
                           <svg
                             class="text-yellow-600"
                             xmlns="http://www.w3.org/2000/svg"
@@ -742,7 +742,7 @@
                             />
                           </svg>
 
-                          <span class="font-semibold ml-2">4.8</span>
+                          <span class="ml-2">4.8</span>
                         </div>
 
                         <span> Tsh 265,200 </span>
@@ -2027,6 +2027,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+const isDark = useDark();
 import type { TabsPaneContext } from 'element-plus'
 
 
